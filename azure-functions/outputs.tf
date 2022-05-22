@@ -1,4 +1,4 @@
-resource "azurerm_function_app_function" "example" {
-  name                     = "test-azure-functions"
-  function_app_function_id = azurerm_function_app_function.example.id
+output = "function.id" {
+description = "id"
+value = try(azurerm_function_app_function.example.id)
 }
