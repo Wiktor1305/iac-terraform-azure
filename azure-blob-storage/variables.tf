@@ -57,3 +57,9 @@ variable "source_storage_blob" {
   type = string
   default = "some-local-file.zip"
 }
+
+variable "url_storage_blob" {
+  desctription = "url of storage blob"
+  type = string
+  default = "www.piesek.pl"
+}
