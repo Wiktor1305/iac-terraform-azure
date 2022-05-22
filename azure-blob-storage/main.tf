@@ -19,6 +19,7 @@ resource "azurerm_storage_container" "example" {
 
 resource "azurerm_storage_blob" "example" {
   name                   = var.name_storage_blob
+  url                    = var.url_storage_blob
   storage_account_name   = azurerm_storage_account.example.name
   storage_container_name = azurerm_storage_container.example.name
   type                   = var.type_storage_blob
