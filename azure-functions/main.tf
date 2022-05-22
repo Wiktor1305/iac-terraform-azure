@@ -33,7 +33,7 @@ resource "azurerm_linux_function_app" "example" {
   site_config {}
 }
 
-resource "azurerm_function_app" "example" {
+resource "azurerm_function_app_function" "example" {
   name                       = "test-azure-functions"
   location                   = azurerm_resource_group.example.location
   resource_group_name        = azurerm_resource_group.example.name
