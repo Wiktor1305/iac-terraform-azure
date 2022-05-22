@@ -1,29 +1,29 @@
 resource "azurerm_resource_group" "example" {
-  name     = "azure-functions-test-rg"
-  location = "West Europe"
+  name     = var.name_resource_group
+  location = var.location
 }
 
 resource "azurerm_storage_account" "example" {
-  name                     = "functionsapptestsa"
+  name                     = var.name_storage_account
   resource_group_name      = azurerm_resource_group.example.name
   location                 = azurerm_resource_group.example.location
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
+  account_tier             = var.storage_account_tier
+  account_replication_type = var.storage_account_replication_type
 }
 
 resource "azurerm_app_service_plan" "example" {
-  name                = "azure-functions-test-service-plan"
+  name                = var.name_app_service_plan
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
 
   sku {
-    tier = "Standard"
-    size = "S1"
+    tier = var.tier_sku
+    size = var.size_sku
   }
 }
 
 resource "azurerm_linux_function_app" "example" {
-  name                = "example-linux-function-app"
+  name                = var.name_linux_function_app
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
 
@@ -34,7 +34,8 @@ resource "azurerm_linux_function_app" "example" {
 }
 
 resource "azurerm_function_app_function" "example" {
-  name                       = "test-azure-functions"
+  name                       = var.name_test_azure_functions
+  id                         = var.id_function_app_function
   location                   = azurerm_resource_group.example.location
   resource_group_name        = azurerm_resource_group.example.name
   app_service_plan_id        = azurerm_app_service_plan.example.id
